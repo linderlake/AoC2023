@@ -47,6 +47,11 @@ TEST_F(Solutions, PartTwoExampleDataRowforRow) {
   }
 }
 
+TEST_F(Solutions, PartTwoRealData) {
+  int answer{PartTwo(realInput())};
+  EXPECT_EQ(answer, 54706);
+}
+
 int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

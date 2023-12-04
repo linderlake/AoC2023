@@ -16,6 +16,7 @@
                 "llvm-vs-code-extensions.vscode-clangd",
                 "ms-vscode.cpptools-extension-pack",
                 "ms-vscode.cmake-tools",
+                "foxundermoon.shell-format",
                 "GitHub.copilot",
                 "GitHub.copilot-chat"
             ]
