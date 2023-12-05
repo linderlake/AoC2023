@@ -1,33 +1,33 @@
 #include "solutions.h"
-#include "placeholder.h"
+#include "number_cruncher.h"
 #include <optional>
 
 int PartOne(const std::vector<std::string>& input) {
-  int answer{};
-  for (size_t hIndex = 0; hIndex < input.size(); hIndex++) {
-    auto row{input[hIndex]};
-    int skips{0};
-    for (size_t rowIndex = 0; rowIndex < row.size(); rowIndex++) {
-      if (skips > 0) {
-        skips--;
+  int answer{0};
+  for (size_t rowIndex = 0; rowIndex < input.size(); rowIndex++) {
+    const auto& row{input[rowIndex]};
+    int skipCount{0};
+    for (size_t charIndex = 0; charIndex < row.size(); charIndex++) {
+      if (skipCount > 0) {
+        skipCount--;
         continue;
       }
-      char c{row[rowIndex]};
+      char c{row[charIndex]};
       if (CharacterIsADigit(c)) {
-        auto fullNumber{GetFullNumber(row, rowIndex)};
-        skips = fullNumber.length() - 1;
-        std::optional<std::string> prevRow{};
-        std::optional<std::string> nextRow{};
-        if (hIndex > 0) {
-          prevRow = input[hIndex - 1];
-        }
-        if (hIndex < (input.size() - 1)) {
-          nextRow = input[hIndex + 1];
-        }
+        auto fullNumber{GetFullNumber(row, charIndex)};
+        skipCount = fullNumber.length() - 1;
+
+        std::optional<std::string> prevRow =
+            rowIndex > 0 ? std::make_optional(input[rowIndex - 1])
+                         : std::nullopt;
+        std::optional<std::string> nextRow =
+            rowIndex < (input.size() - 1)
+                ? std::make_optional(input[rowIndex + 1])
+                : std::nullopt;
 
         if (NumberIsAdjacentToASymbol(prevRow, row, nextRow, fullNumber,
-                                      rowIndex)) {
-          answer += std::stoi(fullNumber);
+                                      charIndex)) {
+          answer += std::stoi(std::string(fullNumber));
         }
       }
     }

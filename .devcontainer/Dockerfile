@@ -18,6 +18,7 @@ RUN su vscode -c "${VCPKG_ROOT}/vcpkg install $VCPKG_PACKAGES"
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends $APT_PACKAGES
 
+# install clangd 17
 RUN mkdir -p /tmp/ && \
     wget https://github.com/clangd/clangd/releases/download/${CLANGD_VERSION}/clangd-linux-${CLANGD_VERSION}.zip -P /tmp/ && \
     unzip /tmp/clangd* -d /tmp/ && \

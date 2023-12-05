@@ -20,7 +20,7 @@ TEST_F(Solutions, PartOneExampleData) {
   EXPECT_EQ(answer, 4361);
 }
 TEST_F(Solutions, PartOneExtraData) {
-  std::vector<std::vector<std::string>> inputs = {
+  std::vector<std::vector<std::string>> inputsAdjacent = {
       {"...........", "..*........", "..100......", "..........."},
 
       {"...........", "...*.......", "..100......", "..........."},
@@ -41,10 +41,33 @@ TEST_F(Solutions, PartOneExtraData) {
 
       {"...........", "...........", ".*100......", "..........."},
 
-      {"...........", ".*.........", "..100......", "..........."}};
+      {"...........", ".*.........", "..100......", "..........."},
+      {"...........", ".....*.....", "....100....", "....100....",
+       "..........."},
+      {"...........", "....100....", "....100....", "....100...*",
+       "........100"},
+      {"...........", "....100....", "....100....", "....100...*",
+       ".......100."},
+      {"...........", "....100....", "....100....", "........100",
+       "..........*"},
+      {"...........", "....100....", "....100....", "100........",
+       "*.........."},
+      {"..........*", ".......100.", "....100....", "100........",
+       "..........."},
 
-  for (const auto& input : inputs) {
+  };
+
+  for (const auto& input : inputsAdjacent) {
     EXPECT_EQ(PartOne(input), 100);
+  }
+
+  std::vector<std::vector<std::string>> inputsNonAdjacent = {
+      {"..*******..", "..*.....*..", "..*.100.*..", "..*.....*..",
+       "..*******."},
+      {"...", "1.*", "..."}};
+
+  for (const auto& input : inputsNonAdjacent) {
+    EXPECT_EQ(PartOne(input), 0);
   }
 }
 TEST(PartOneTest, TestStarAnd100Positions) {
@@ -74,6 +97,7 @@ TEST(PartOneTest, TestStarAnd100Positions) {
       {{"*..........", "100........", "...........", "..........."}, 100},
 
       {{"*..........", "...........", "100........", "..........."}, 0},
+      {{"*..........", "...........", "........100", "..........."}, 0},
 
       {{"100........", "*..........", "...........", "..........."}, 100},
 
@@ -81,15 +105,17 @@ TEST(PartOneTest, TestStarAnd100Positions) {
 
       {{"*00........", "1..........", "...........", "..........."}, 1},
 
-      {{"100........", "*..........", "...........", "..........."}, 100}};
+      {{"100........", "*..........", "...........", "..........."}, 100},
+      {{"...........", "........100", "....100....", "100........",
+        "*.........."},
+       100}};
 }
 
-/*
 TEST_F(Solutions, PartOneRealData) {
   int answer{PartOne(realInput())};
-  EXPECT_EQ(answer, 55447);
+  EXPECT_EQ(answer, 519444);
 }
-
+/*
 TEST_F(Solutions, PartTwoExampleData) {
   int answer{PartTwo(exampleInputPartTwo)};
   EXPECT_EQ(answer, 281);
@@ -105,7 +131,7 @@ TEST_F(Solutions, PartTwoExampleDataRowforRow) {
 
 TEST_F(Solutions, PartTwoRealData) {
   int answer{PartTwo(realInput())};
-  EXPECT_EQ(answer, 72706);
+  EXPECT_EQ(answer, 74528807);
 }
 */
 int main(int argc, char** argv) {

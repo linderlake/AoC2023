@@ -1,7 +1,6 @@
 token.txt
 *.out.dSYM
 *.out
-*.txt
 .DS_Store
 
 # Prerequisites
@@ -53,3 +52,4 @@ _deps
 AoCHelperTests
 
 build/
+lib/

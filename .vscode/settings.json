@@ -2,7 +2,7 @@
     "C_Cpp.intelliSenseEngine": "disabled",
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "ms-vscode.cpptools",
+    "editor.defaultFormatter": "foxundermoon.shell-format",
     "cmake.configureOnOpen": true,
     "cmake.options.statusBarVisibility": "visible",
     "cmake.buildDirectory": "${workspaceFolder}/build",
@@ -17,11 +17,5 @@
     "[cpp]": {
         "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
     },
-    "cmake.sourceDirectory": "${workspaceFolder}/src",
-    "[dockerfile]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format"
-    },
-    "[shellscript]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format"
-    },
+    "cmake.sourceDirectory": "${workspaceFolder}/src"
 }
