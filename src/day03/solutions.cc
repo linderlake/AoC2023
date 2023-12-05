@@ -24,7 +24,6 @@ int PartOne(const std::vector<std::string>& input) {
             rowIndex < (input.size() - 1)
                 ? std::make_optional(input[rowIndex + 1])
                 : std::nullopt;
-
         if (NumberIsAdjacentToASymbol(prevRow, row, nextRow, fullNumber,
                                       charIndex)) {
           answer += std::stoi(std::string(fullNumber));
