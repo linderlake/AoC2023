@@ -18,6 +18,9 @@ RUN su vscode -c "${VCPKG_ROOT}/vcpkg install $VCPKG_PACKAGES"
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends $APT_PACKAGES
 
+# Add github.com to known hosts to avoid prompt
+RUN mkdir -p ~/.ssh && chmod 700 ~/.ssh && touch ~/.ssh/known_hosts && chmod 600 ~/.ssh/known_hosts && ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+
 # install clangd 17
 RUN mkdir -p /tmp/ && \
     wget https://github.com/clangd/clangd/releases/download/${CLANGD_VERSION}/clangd-linux-${CLANGD_VERSION}.zip -P /tmp/ && \
