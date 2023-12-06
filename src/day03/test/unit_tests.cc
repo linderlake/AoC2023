@@ -113,18 +113,12 @@ TEST_F(Solutions, PartTwoExtraData) {
        100000},
       {{"...........", "...........", ".........20", "..........*",
         ".......100.", "..........."},
-       2000}};
+       2000},
+      {{"...........", "...........", ".........20", ".......100*",
+        ".......100.", "..........."},
+       0}};
   for (const auto& testCase : testCases) {
     EXPECT_EQ(PartTwo(testCase.first), testCase.second);
-  }
-}
-
-/*
-TEST_F(Solutions, PartTwoExampleDataRowforRow) {
-  std::vector<int> answers{29, 83, 13, 24, 42, 14, 76};
-  for (size_t i = 0; i < exampleInputPartTwo.size(); i++) {
-    int answer{PartTwo({exampleInputPartTwo[i]})};
-    EXPECT_EQ(answer, answers[i]);
   }
 }
 
@@ -132,7 +126,7 @@ TEST_F(Solutions, PartTwoRealData) {
   int answer{PartTwo(realInput())};
   EXPECT_EQ(answer, 74528807);
 }
-*/
+
 int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

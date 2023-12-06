@@ -1,4 +1,4 @@
-add_library(day03_lib solutions.cc number_cruncher.cc)
+add_library(day03_lib solutions.cc symbol_processing.cc)
 
 # Add main executable
 add_executable(day03 main.cc)

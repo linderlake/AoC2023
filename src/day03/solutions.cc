@@ -1,5 +1,5 @@
 #include "solutions.h"
-#include "number_cruncher.h"
+#include "symbol_processing.h"
 #include <optional>
 
 int PartOne(const std::vector<std::string>& input) {
@@ -17,10 +17,10 @@ int PartOne(const std::vector<std::string>& input) {
         auto fullNumber{GetFullNumber(row, charIndex)};
         skipCount = fullNumber.length() - 1;
 
-        std::optional<std::string> prevRow =
+        const std::optional<std::string>& prevRow =
             rowIndex > 0 ? std::make_optional(input[rowIndex - 1])
                          : std::nullopt;
-        std::optional<std::string> nextRow =
+        const std::optional<std::string>& nextRow =
             rowIndex < (input.size() - 1)
                 ? std::make_optional(input[rowIndex + 1])
                 : std::nullopt;
@@ -36,7 +36,33 @@ int PartOne(const std::vector<std::string>& input) {
 
 int PartTwo(const std::vector<std::string>& input) {
   int answer{};
-  for (auto row : input) {
+  for (size_t rowIndex = 0; rowIndex < input.size(); rowIndex++) {
+    const auto& row{input[rowIndex]};
+    for (size_t charIndex = 0; charIndex < row.size(); charIndex++) {
+
+      // find gears
+      char c{row[charIndex]};
+      if (not CharacterIsAGear(c)) {
+        continue;
+      }
+
+      // perform a search in the vicinity of the gear
+      const std::optional<std::string>& prevRow =
+          rowIndex > 0 ? std::make_optional(input[rowIndex - 1]) : std::nullopt;
+      const std::optional<std::string>& nextRow =
+          rowIndex < (input.size() - 1)
+              ? std::make_optional(input[rowIndex + 1])
+              : std::nullopt;
+      auto adjacentNumbers{
+          FindAdjacentNumbersToGear(prevRow, row, nextRow, charIndex)};
+      if (adjacentNumbers.size() != 2 || adjacentNumbers.empty()) {
+        continue;
+      }
+
+      // get full numbers, multiply them and add to answer
+      answer += GetAdjacentNumbersAndCalculateGearRatio(
+          adjacentNumbers, prevRow, row, nextRow, charIndex);
+    }
   }
   return answer;
 }
