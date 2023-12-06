@@ -6,7 +6,7 @@ const bool kSTRINGSEARCH{true};
 
 int PartOne(const std::vector<std::string>& input) {
   int answer{};
-  for (auto row : input) {
+  for (const auto& row : input) {
     char firstNumber{FindNumber(row)};
     char lastNumber{FindNumber(row, kREVERSE)};
     answer += std::stoi(std::string{firstNumber, lastNumber});
@@ -16,7 +16,7 @@ int PartOne(const std::vector<std::string>& input) {
 
 int PartTwo(const std::vector<std::string>& input) {
   int answer{};
-  for (auto row : input) {
+  for (const auto& row : input) {
     char firstNumber{FindNumber(row, !kREVERSE, kSTRINGSEARCH)};
     char lastNumber{FindNumber(row, kREVERSE, kSTRINGSEARCH)};
     answer += std::stoi(std::string{firstNumber, lastNumber});

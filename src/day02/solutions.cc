@@ -4,7 +4,7 @@
 
 int PartOne(const std::vector<std::string>& input) {
   int answer{};
-  for (auto row : input) {
+  for (const auto& row : input) {
     bool possibleCombination{true};
     auto splitRow{myLib::split(row, ':')};
     int gameId{std::stoi(myLib::split(splitRow[0], ' ')[1])};
@@ -30,7 +30,7 @@ int PartOne(const std::vector<std::string>& input) {
 
 int PartTwo(const std::vector<std::string>& input) {
   int answer{};
-  for (auto row : input) {
+  for (const auto& row : input) {
     int lowestAmountOfRedCubes{0};
     int lowestAmountOfGreenCubes{0};
     int lowestAmountOfBlueCubes{0};
