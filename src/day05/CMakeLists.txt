@@ -1,4 +1,4 @@
-add_library(day05_lib solutions.cc placeholder.cc)
+add_library(day05_lib solutions.cc map_parser.cc)
 
 # Add main executable
 add_executable(day05 main.cc)
