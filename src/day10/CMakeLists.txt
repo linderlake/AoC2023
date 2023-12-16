@@ -1,4 +1,4 @@
-add_library(day10_lib solutions.cc placeholder.cc)
+add_library(day10_lib solutions.cc tile_parser.cc)
 
 # Add main executable
 add_executable(day10 main.cc)
