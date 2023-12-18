@@ -1,31 +1,75 @@
 #include "AoCHelper.h"
+#include "placeholder.h"
 #include "solutions.h"
 #include "gtest/gtest.h"
+#include <string>
 
 class Solutions : public ::testing::Test {
 protected:
+  // clang-format off
   std::vector<std::string> exampleInputPartOne{
-      "...#......", ".......#..", "#.........", "..........", "......#...",
-      ".#........", ".........#", "..........", ".......#..", "#...#....."};
+      "...#......",
+      ".......#..",
+      "#.........",
+      "..........",
+      "......#...",
+      ".#........",
+      ".........#",
+      "..........",
+      ".......#..",
+      "#...#....."};
+  std::vector<std::string> exampleInputPartOneExtraEmpty{
+      "............", 
+      "....#.......", 
+      "........#...", 
+      ".#..........", 
+      "............", 
+      ".......#....",
+      "..#.........", 
+      "..........#.", 
+      "............", 
+      "........#...", 
+      ".#...#......",
+      "............"};
+  std::vector<std::string> exampleInputPartOneExtraEmptyFilled{
+      ".................",
+      ".................",
+      "......#..........",
+      "...........#.....",
+      "..#..............",
+      ".................",
+      ".................",
+      "..........#......",
+      "...#.............",
+      "..............#..",
+      ".................",
+      ".................",
+      "...........#.....",
+      "..#....#.........",
+      ".................",
+      "................."};
   std::vector<std::string> exampleInputPartTwo{};
-
+  // clang-format on
   std::function<std::vector<std::string>()> realInput = []() {
     AoCHelper aocHelper{"2023", "11"};
     return aocHelper.get_input();
   };
 };
 
+TEST_F(Solutions, PartOneDuplicateEmptyRowsAndColumns) {
+  DuplicateEmptyRowsAndColumns(exampleInputPartOneExtraEmpty);
+  EXPECT_EQ(exampleInputPartOneExtraEmpty, exampleInputPartOneExtraEmptyFilled);
+}
 TEST_F(Solutions, PartOneExampleData) {
   auto answer{PartOne(exampleInputPartOne)};
   EXPECT_EQ(answer, 374);
 }
 
-/*
 TEST_F(Solutions, PartOneRealData) {
   auto answer{PartOne(realInput())};
-  EXPECT_EQ(answer, 55447);
+  EXPECT_EQ(answer, 10154062);
 }
-
+/*
 TEST_F(Solutions, PartTwoExampleData) {
   auto answer{PartTwo(exampleInputPartTwo)};
   EXPECT_EQ(answer, 281);
