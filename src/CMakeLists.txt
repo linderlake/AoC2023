@@ -19,7 +19,7 @@ find_package(unofficial-curlpp CONFIG REQUIRED)
 # add_library AoCHelper
 add_library(AoCHelper STATIC IMPORTED)
 set_target_properties(AoCHelper PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/../lib/AocHelper/libAoCHelper.a)
-include_directories(${CMAKE_SOURCE_DIR}/../lib/AoCHelper/include)
+include_directories(${CMAKE_SOURCE_DIR}/../lib/AocHelper/include/)
 
 link_libraries(AoCHelper unofficial::curlpp::curlpp)
 
@@ -33,3 +33,4 @@ add_subdirectory(day07)
 add_subdirectory(day08)
 add_subdirectory(day09)
 add_subdirectory(day10)
+add_subdirectory(day11)
