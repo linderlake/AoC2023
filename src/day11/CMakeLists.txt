@@ -1,4 +1,4 @@
-add_library(day11_lib solutions.cc placeholder.cc)
+add_library(day11_lib solutions.cc galaxy_processing.cc)
 
 # Add main executable
 add_executable(day11 main.cc)

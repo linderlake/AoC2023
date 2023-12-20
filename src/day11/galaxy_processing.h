@@ -7,7 +7,6 @@ struct Node {
   int y;
   int weight;
   Node(int x, int y, int weight);
-  virtual ~Node() = default;
 };
 
 struct Galaxy : Node {
@@ -20,5 +19,3 @@ void DuplicateEmptyRowsAndColumns(std::vector<std::string>& input);
 void MarkEmptyRowsAndColumns(std::vector<std::string>& input);
 std::vector<std::pair<Galaxy*, Galaxy*>>
 GetPairs(std::vector<Galaxy>& galaxies);
-std::vector<std::pair<Galaxy*, Galaxy*>>
-GetPairs(std::vector<Galaxy*>& galaxies);

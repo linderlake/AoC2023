@@ -1,7 +1,5 @@
 #include "solutions.h"
-#include "placeholder.h"
-#include <iomanip>
-#include <iostream>
+#include "galaxy_processing.h"
 #include <numeric>
 #include <tuple>
 
@@ -48,7 +46,7 @@ int PartOne(std::vector<std::string> input) {
   return answer;
 }
 
-long PartTwo(std::vector<std::string> input, const int weight) {
+long long PartTwo(std::vector<std::string> input, const int weight) {
   std::vector<Node> nodes;
   std::vector<Galaxy> galaxies;
 
@@ -71,14 +69,8 @@ long PartTwo(std::vector<std::string> input, const int weight) {
   std::sort(nodes.begin(), nodes.end(), [](const Node& a, const Node& b) {
     return std::tie(a.x, a.y) < std::tie(b.x, b.y);
   });
-
-  std::vector<Galaxy*> galaxyPointers;
-  for (auto& galaxy : galaxies) {
-    galaxyPointers.push_back(&galaxy);
-  }
-
-  auto galaxyPairs{GetPairs(galaxyPointers)};
-  long answer{};
+  auto galaxyPairs{GetPairs(galaxies)};
+  long long answer{};
   for (const auto& pair : galaxyPairs) {
     const auto& [galaxy1, galaxy2] = pair;
     const auto xStart{galaxy1->x};
@@ -113,14 +105,8 @@ long PartTwo(std::vector<std::string> input, const int weight) {
           [](const Node& a, const Node& b) {
             return std::tie(a.x, a.y) < std::tie(b.x, b.y);
           });
-      if (it != nodes.end() && it->x == position.first &&
-          it->y == position.second) {
-        answer += it->weight;
-      } else {
-        answer++;
-      }
+      answer += it->weight;
     }
   }
-
   return answer;
 }

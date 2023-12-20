@@ -1,5 +1,5 @@
 #include "AoCHelper.h"
-#include "placeholder.h"
+#include "galaxy_processing.h"
 #include "solutions.h"
 #include "gtest/gtest.h"
 #include <string>
@@ -48,7 +48,6 @@ protected:
       "..#....#.........",
       ".................",
       "................."};
-  std::vector<std::string> exampleInputPartTwo{};
   // clang-format on
   std::function<std::vector<std::string>()> realInput = []() {
     AoCHelper aocHelper{"2023", "11"};

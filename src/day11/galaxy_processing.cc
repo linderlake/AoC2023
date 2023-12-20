@@ -1,4 +1,4 @@
-#include "placeholder.h"
+#include "galaxy_processing.h"
 
 Node::Node(int x, int y, int weight) : x{x}, y{y}, weight{weight} {}
 Galaxy::Galaxy(int x, int y) : Node(x, y, 1) {}
@@ -51,16 +51,6 @@ GetPairs(std::vector<Galaxy>& galaxies) {
   for (size_t i = 0; i < galaxies.size(); ++i) {
     for (size_t j = i + 1; j < galaxies.size(); ++j) {
       pairs.emplace_back(&galaxies[i], &galaxies[j]);
-    }
-  }
-  return pairs;
-}
-std::vector<std::pair<Galaxy*, Galaxy*>>
-GetPairs(std::vector<Galaxy*>& galaxies) {
-  std::vector<std::pair<Galaxy*, Galaxy*>> pairs;
-  for (size_t i = 0; i < galaxies.size(); ++i) {
-    for (size_t j = i + 1; j < galaxies.size(); ++j) {
-      pairs.emplace_back(galaxies[i], galaxies[j]);
     }
   }
   return pairs;
