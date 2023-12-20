@@ -54,3 +54,4 @@ AoCHelperTests
 build/
 lib/
 *input.txt
+.cache/

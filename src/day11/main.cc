@@ -8,5 +8,5 @@ int main() {
   auto result = aocHelper.get_input();
 
   std::cout << "Puzzle one: " << PartOne(result) << std::endl;
-  std::cout << "Puzzle two: " << PartTwo(result) << std::endl;
+  std::cout << "Puzzle two: " << PartTwo(result, 1000000) << std::endl;
 }

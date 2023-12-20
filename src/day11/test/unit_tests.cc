@@ -19,16 +19,16 @@ protected:
       ".......#..",
       "#...#....."};
   std::vector<std::string> exampleInputPartOneExtraEmpty{
-      "............", 
-      "....#.......", 
-      "........#...", 
-      ".#..........", 
-      "............", 
+      "............",
+      "....#.......",
+      "........#...",
+      ".#..........",
+      "............",
       ".......#....",
-      "..#.........", 
-      "..........#.", 
-      "............", 
-      "........#...", 
+      "..#.........",
+      "..........#.",
+      "............",
+      "........#...",
       ".#...#......",
       "............"};
   std::vector<std::string> exampleInputPartOneExtraEmptyFilled{
@@ -69,25 +69,37 @@ TEST_F(Solutions, PartOneRealData) {
   auto answer{PartOne(realInput())};
   EXPECT_EQ(answer, 10154062);
 }
-/*
-TEST_F(Solutions, PartTwoExampleData) {
-  auto answer{PartTwo(exampleInputPartTwo)};
-  EXPECT_EQ(answer, 281);
+
+TEST_F(Solutions, PartTwoExampleDummyData) {
+  std::vector<std::string> exampleInputDummyData{"..#", "#.."};
+  EXPECT_EQ(PartTwo(exampleInputDummyData, 1), 3);
+  EXPECT_EQ(PartTwo(exampleInputDummyData, 10), 12);
+}
+TEST_F(Solutions, PartTwoExampleDummyData2) {
+  std::vector<std::string> exampleInputDummyData2{".#", "..", "#."};
+  EXPECT_EQ(PartTwo(exampleInputDummyData2, 1), 3);
+  EXPECT_EQ(PartTwo(exampleInputDummyData2, 10), 12);
+}
+TEST_F(Solutions, PartTwoExampleDummyData3) {
+  std::vector<std::string> exampleInputDummyData3{"..#", "...", "#.."};
+  EXPECT_EQ(PartTwo(exampleInputDummyData3, 1), 4);
+  EXPECT_EQ(PartTwo(exampleInputDummyData3, 10), 22);
+}
+TEST_F(Solutions, PartTwoExampleData10) {
+  auto answer{PartTwo(exampleInputPartOne, 10)};
+  EXPECT_EQ(answer, 1030);
 }
 
-TEST_F(Solutions, PartTwoExampleDataRowforRow) {
-  std::vector<int> answers{29, 83, 13, 24, 42, 14, 76};
-  for (size_t i = 0; i < exampleInputPartTwo.size(); i++) {
-    auto answer{PartTwo({exampleInputPartTwo[i]})};
-    EXPECT_EQ(answer, answers[i]);
-  }
+TEST_F(Solutions, PartTwoExampleData100) {
+  auto answer{PartTwo(exampleInputPartOne, 100)};
+  EXPECT_EQ(answer, 8410);
 }
 
 TEST_F(Solutions, PartTwoRealData) {
-  auto answer{PartTwo(realInput())};
-  EXPECT_EQ(answer, 72706);
+  auto answer{PartTwo(realInput(), 1000000)};
+  EXPECT_EQ(answer, 553083047914);
 }
-*/
+
 int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
