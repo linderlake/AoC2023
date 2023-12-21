@@ -4,12 +4,12 @@
 
 class Solutions : public ::testing::Test {
 protected:
-  std::vector<std::string> exampleInputPartOne{"#.#.### 1,1,3",
-                                               ".#...#....###. 1,1,3",
-                                               ".#.###.#.###### 1,3,1,6",
-                                               "####.#...#... 4,1,1",
-                                               "#....######..#####. 1,6,5",
-                                               ".###.##....# 3,2,1"};
+  std::vector<std::string> exampleInputPartOne{"???.### 1,1,3",
+                                               ".??..??...?##. 1,1,3",
+                                               "?#?#?#?#?#?#?#? 1,3,1,6",
+                                               "????.#...#... 4,1,1",
+                                               "????.######..#####. 1,6,5",
+                                               "?###???????? 3,2,1"};
   std::vector<std::string> exampleInputPartTwo{};
 
   std::function<std::vector<std::string>()> realInput = []() {
