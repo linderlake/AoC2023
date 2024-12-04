@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/devcontainers/cpp:1-debian-11
 
 ARG REINSTALL_CMAKE_VERSION_FROM_SOURCE="none"
-ARG APT_PACKAGES="clang-format"
+ARG APT_PACKAGES="clang-format vim"
 ARG VCPKG_PACKAGES="curlpp:x64-linux gtest:x64-linux"
 ARG CLANGD_VERSION=17.0.3
 
